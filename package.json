@@ -1,0 +1,30 @@
+{
+  "name": "webscrapping-wether",
+  "version": "1.0.0",
+  "description": "A beginner web scrapping with pupeteer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/murilorsv14/WebScrapping-Wether.git"
+  },
+  "keywords": [
+    "pupeteer",
+    "nodeJs",
+    "JavaScript",
+    "readFileSync"
+  ],
+  "author": "Murilo Ribeiro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/murilorsv14/WebScrapping-Wether/issues"
+  },
+  "homepage": "https://github.com/murilorsv14/WebScrapping-Wether#readme",
+  "dependencies": {
+    "puppeteer": "^13.0.1",
+    "readline-sync": "^1.4.10"
+  }
+}
