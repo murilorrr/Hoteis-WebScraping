@@ -15,55 +15,57 @@ const readline = require('readline-sync');
 
     await page.waitForTimeout(1000);
 
-    // Setando as Perguntas
-
-    // const numeroDePassageiros = readline.question('Qual o numero de passageiros Adultos? ');
-
     // setando os inputs da pagina
-    const fromCity = readline.question('De onde você está saindo? ');
-    const fromInput = await page.$('input[placeholder="Busque por aeroporto"]');
-    await fromInput.type(fromCity, {delay: 100});
-    await page.keyboard.press('Enter');
+    // const fromCity = readline.question('De onde você está saindo? ');
+    // const fromInput = await page.$('input[placeholder="Busque por aeroporto"]');
+    // await fromInput.type(fromCity, {delay: 100});
+    // await page.keyboard.press('Enter');
 
-    const toCity= readline.question('Para onde você vai? ');
-    const toInput = await page.$$('input[placeholder="Busque por aeroporto"]');
-    await toInput[1].type(toCity, {delay: 200});
-    await page.keyboard.press('Enter', {delay: 100});
+    // const toCity= readline.question('Para onde você vai? ');
+    // const toInput = await page.$$('input[placeholder="Busque por aeroporto"]');
+    // await toInput[1].type(toCity, {delay: 200});
+    // await page.keyboard.press('Enter', {delay: 100});
     
-    const somenteIda= readline.question('Somente ida? sim ou nao ');
-    const idaInput = await page.$$('div[role="group"] button');
-    if(somenteIda === 'sim') {
-      await idaInput[1].click({delay: 200});
-    } else {
-      await idaInput[0].click({delay: 200});
+    // const somenteIda= readline.question('Somente ida? sim ou nao ');
+    // const idaInput = await page.$$('div[role="group"] button');
+    // if(somenteIda === 'sim') {
+    //   await idaInput[1].click({delay: 200});
+    // } else {
+    //   await idaInput[0].click({delay: 200});
+    // }
+
+    // if(somenteIda === 'sim') {
+    //   const diaViagemIda = readline.question('Qual o dia da Sua viagem? DD/MM/AAAA ');
+    //   const diaIdaInput = await page.$('[id="datepicker-ida"]');
+
+    //   await diaIdaInput.type(diaViagemIda);
+    // } else {
+    //   const diaViagemIda = readline.question('Qual o dia da Sua viagem? DD/MM/AA ');
+    //   const diaViagemVolta = readline.question('Qual o dia da Sua viagem? DD/MM/AA ');
+    //   const diaIdaInput = await page.$('[id="datepicker-ida"]');
+    //   const diaVoltaInput = await page.$('[id="datepicker-volta"]');
+
+    //   await diaIdaInput.type(diaViagemIda);
+    //   await diaVoltaInput.type(diaViagemVolta);
+    // }
+
+    const numeroDePassageiros = readline.question('Qual o numero de passageiros Adultos? ');
+    const numeroDePassageirosInput = await page.$('[value="1 Passageiro"]');
+    await numeroDePassageirosInput.click();
+    
+    const adicionaAdulto = await page.$('i[color="forest"]');
+    for (let referencia = 1; referencia < Number(numeroDePassageiros); referencia++) {
+      await adicionaAdulto.click({delay: 30})
     }
 
-    if(somenteIda === 'sim') {
-      const diaViagemIda = readline.question('Qual o dia da Sua viagem? DD/MM/AA ');
-      const diaIdaInput = await page.$('[id="datepicker-ida"]');
+    page.waitForTimeout(1000);
 
-      await diaIdaInput.type(diaViagemIda);
-    } else {
-      const diaViagemIda = readline.question('Qual o dia da Sua viagem? DD/MM/AA ');
-      const diaViagemVolta = readline.question('Qual o dia da Sua viagem? DD/MM/AA ');
-      const diaIdaInput = await page.$('[id="datepicker-ida"]');
-      const diaVoltaInput = await page.$('[id="datepicker-volta"]');
+    ////////////////////////////////////////////////////////////////
+      const botaoSubmit = await page.$('button[type="submit"]');
+      await botaoSubmit.click()
+    ////////////////////////////////////////////////////////////////
 
-      await diaIdaInput.type(diaViagemIda);
-      await diaVoltaInput.type(diaViagemVolta);
-    }
     
-    // const toInput = await page.$$('input[placeholder="Busque por aeroporto"]')[1];
-    // toInput.type(toCity);
-    // const toInput = await page.$$('div[role="group"] button');
-
-    // document.querySelectorAll('button span.MuiButton-label');
-    // await page.waitForSelector("span.MuiButton-label")[0];
-    // const IdaEVolta = await page.$("button span.MuiButton-label");
-    // console.log(IdaEVolta);
-    // const SomenteIda = await page.waitForSelector("span.MuiButton-label")[1];
-    // await page.click("span.MuiButton-label");
-
     // const result = await page.evaluate(() => {
     //   const nodelist = document.querySelectorAll('button span.MuiButton-label');
     //   const arrayNode = [...nodelist]fromCity
@@ -81,11 +83,7 @@ const readline = require('readline-sync');
     // await page.type("div[title='Digite uma mensagem']", message, {delay: 30});
 
 
-      ////////////////////////////////////////////////////////////////
-      // const botaoSubmit = page.$('button[type="submit"]');
-      // await botaoSubmit.click()
-      ////////////////////////////////////////////////////////////////
-
+      
 
     // esperar as respostas
 
