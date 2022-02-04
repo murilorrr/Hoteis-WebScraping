@@ -1,15 +1,6 @@
 const puppeteer = require('puppeteer');
 const readline = require('readline-sync');
 
-const botaoAdicionaAdulto = document.getElementsByClassName('jyrmBK')[1];
-const botaoConfirmaPassageiros = document.getElementsByClassName('iSAFWr')[0];
-
-const botaoFromCity = document.getElementsByTagName('input')[1];
-const botaoToCity = document.getElementsByTagName('input')[3];
-
-const dataIda = document.getElementsByClassName('DateInput_input_1')[0];
-const dataVolta = document.getElementsByClassName('DateInput_input_1')[1];
-
 // Login Function Logic
 (async function main() {
   try {
@@ -23,21 +14,78 @@ const dataVolta = document.getElementsByClassName('DateInput_input_1')[1];
     //Navigates to 123milhas
     await page.goto("https://123milhas.com/");
 
-    // Perguntas()
+    await page.waitForTimeout(1000);
+
+    // setando as Perguntas()
 
     const fromCity = readline.question('De onde você está saindo? ');
-    const toCity= readline.question('Para onde você vai? ');
-    const onlyVai= readline.question('só ida? Sim ou Nao') || null;
-    const diaViagemIda = readline.question('Qual o dia da Sua viagem? DD/MM/AA');
-    const diaViagemVolta = readline.question('Qual o dia da Sua viagem? DD/MM/AA');
-    const numeroDePassageiros = readline.question('Qual o numero de passageiros Adultos?');
+    // const toCity= readline.question('Para onde você vai? ');
+    // const onlyVai= readline.question('Somente ida? Sim ou Nao ');
+    // const diaViagemIda = readline.question('Qual o dia da Sua viagem? DD/MM/AA ');
+    // const diaViagemVolta = readline.question('Qual o dia da Sua viagem? DD/MM/AA ');
+    // const numeroDePassageiros = readline.question('Qual o numero de passageiros Adultos? ');
+
+    // setando os inputs da pagina
+    const fromInput = await page.$('input[placeholder="Busque por aeroporto"]');
+    fromInput.type(fromCity);
+    
+    // const toInput = await page.$$('input[placeholder="Busque por aeroporto"]')[1];
+    // toInput.type(toCity);
+
+
+    // document.querySelectorAll('button span.MuiButton-label');
+    // await page.waitForSelector("span.MuiButton-label")[0];
+    // const IdaEVolta = await page.$("button span.MuiButton-label");
+    // console.log(IdaEVolta);
+    // const SomenteIda = await page.waitForSelector("span.MuiButton-label")[1];
+    // await page.click("span.MuiButton-label");
+
+    // const result = await page.evaluate(() => {
+    //   const nodelist = document.querySelectorAll('button span.MuiButton-label');
+    //   const arrayNode = [...nodelist]
+    //   const botoes = arrayNode.map((node) => node.tagName);
+    //   return [botoes];
+    // });
+    // console.log(result);
+
+    // const botaoFromCity = document.getElementsByTagName('input')[1];
+    // const botaoToCity = document.getElementsByTagName('input')[3];
 
     // Clicar os respectivos elementos
+      
+      // await editor.focus();
+      // await botaoFromCity.type(fromCity);
+      // await botaoToCity.type(toCity);
 
-    await editor.focus();
+    // const editor = await page.$("div[tabindex='-1']");
+    // await editor.focus();
+    // await page.type("div[title='Digite uma mensagem']", message, {delay: 30});
+
+
+      ////////////////////////////////////////////////////////////////
+      // const botaoSubmit = page.$('button[type="submit"]');
+      // await botaoSubmit.click()
+      ////////////////////////////////////////////////////////////////
 
 
     // esperar as respostas
+
+    // await page.evaluate(() => {
+    //   const botaoAdicionaAdulto = document.getElementsByClassName('jyrmBK')[1];
+    //   const botaoConfirmaPassageiros = document.getElementsByClassName('iSAFWr')[0];
+
+      
+
+    //   const dataIda = document.getElementsByClassName('DateInput_input_1')[0];
+    //   const dataVolta = document.getElementsByClassName('DateInput_input_1')[1];
+
+    //   console.log(botaoFromCity, botaoToCity);
+
+      
+
+
+    //   // const viagens = document.querySelectorAll('article img');
+    // })
 
 
 
@@ -56,9 +104,9 @@ const dataVolta = document.getElementsByClassName('DateInput_input_1')[1];
     //Algumas perguntas//
     // const contactName = readline.question('Qual o contanto? ');
     // const contactName = readline.question('Qual o contanto? ');
-    await page.click(`button[text='${onlyVai !== null ? 'somente ida': 'Ida e Volta'}']`);
-    await page.click(`input[placeholder=Busque por aeroporto'${fromCity}`);
-    await page.click(`input[placeholder=Busque por aeroporto'${toCity}`);
+    // await page.click(`button[text='${onlyVai !== null ? 'somente ida': 'Ida e Volta'}']`);
+    // await page.click(`input[placeholder=Busque por aeroporto'${fromCity}`);
+    // await page.click(`input[placeholder=Busque por aeroporto'${toCity}`);
     // await page.waitForSelector(".y8WcF");
 
     //Finds the message bar and focuses on it
