@@ -11,22 +11,22 @@ const readline = require('readline-sync');
     );
 
     //Navega para 123milhas
-    await page.goto("https://123milhas.com/");
+    await page.goto("https://123milhas.com/hoteis?adultos=2&bebes=0&checkin=10-10-2022&checkout=11-10-2022&criancas=0&id=1009657&localizacao=Macei%C3%B3,%20Alagoas&quartos=2&tipo=Airport&search_id=1052149839");
 
     await page.waitForTimeout(1000);
 
     // setando os inputs da pagina
-    // const fromCity = readline.question('De onde você está saindo? ');
+    // const fromCity = readline.question('De onde você está saindo? ') || 'belo horizonte';
     // const fromInput = await page.$('input[placeholder="Busque por aeroporto"]');
     // await fromInput.type(fromCity, {delay: 100});
     // await page.keyboard.press('Enter');
 
-    // const toCity= readline.question('Para onde você vai? ');
+    // const toCity= readline.question('Para onde você vai? ') || 'maceio';
     // const toInput = await page.$$('input[placeholder="Busque por aeroporto"]');
     // await toInput[1].type(toCity, {delay: 200});
     // await page.keyboard.press('Enter', {delay: 100});
     
-    // const somenteIda= readline.question('Somente ida? sim ou nao ');
+    // const somenteIda= readline.question('Somente ida? sim ou nao ') || 'sim';
     // const idaInput = await page.$$('div[role="group"] button');
     // if(somenteIda === 'sim') {
     //   await idaInput[1].click({delay: 200});
@@ -35,8 +35,8 @@ const readline = require('readline-sync');
     // }
 
     // if(somenteIda === 'sim') {
-    //   const diaViagemIda = readline.question('Qual o dia da Sua viagem? DD/MM/AAAA ');
-    //   const diaIdaInput = await page.$('[id="datepicker-ida"]');
+    //   const diaViagemIda = readline.question('Qual o dia da Sua viagem? DD/MM/AAAA ')  || '10/10/2022';
+    //   const diaIdaInput = await page.$('[id="datepicker-flights"]');
 
     //   await diaIdaInput.type(diaViagemIda);
     // } else {
@@ -49,28 +49,38 @@ const readline = require('readline-sync');
     //   await diaVoltaInput.type(diaViagemVolta);
     // }
 
-    const numeroDePassageiros = readline.question('Qual o numero de passageiros Adultos? ');
-    const numeroDePassageirosInput = await page.$('[value="1 Passageiro"]');
-    await numeroDePassageirosInput.click();
+    // const numeroDePassageiros = readline.question('Qual o numero de passageiros Adultos? ') || '2';
+    // const numeroDePassageirosInput = await page.$('[value="1 Passageiro"]');
+    // await numeroDePassageirosInput.click();
     
-    const adicionaAdulto = await page.$('i[color="forest"]');
-    for (let referencia = 1; referencia < Number(numeroDePassageiros); referencia++) {
-      await adicionaAdulto.click({delay: 30})
-    }
+    // const adicionaAdulto = await page.$('i[color="forest"]');
+    // for (let referencia = 1; referencia < Number(numeroDePassageiros); referencia++) {
+    //   await adicionaAdulto.click({delay: 30})
+    // }
 
-    page.waitForTimeout(1000);
+    // page.waitForTimeout(1000);
 
-    ////////////////////////////////////////////////////////////////
-      const botaoSubmit = await page.$('button[type="submit"]');
-      await botaoSubmit.click()
-    ////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////
+    //   const botaoSubmit = await page.$('button[type="submit"]');
+    //   await botaoSubmit.click()
+    // ////////////////////////////////////////////////////////////////
 
-    
-    // const result = await page.evaluate(() => {
-    //   const nodelist = document.querySelectorAll('button span.MuiButton-label');
-    //   const arrayNode = [...nodelist]fromCity
-    // const botaoFromCity = document.getElementsByTagName('input')[1];
-    // const botaoToCity = document.getElementsByTagName('input')[3];
+    await page.waitForSelector(".theme-text--value-1");
+
+    await page.waitForTimeout(1000);
+
+    const result = await page.evaluate(() => {
+      console.log('running');
+      const nodelist = document.querySelectorAll('small.theme-text--value-1');
+      const arrayNode = [...nodelist];
+
+      const precos = arrayNode.map((node) => node.lastChild);
+
+      return precos
+    });
+
+    console.log(result);
+
 
     // Clicar os respectivos elementos
       
