@@ -17,9 +17,6 @@ const readline = require('readline-sync');
 
     // Setando as Perguntas
 
-    // const onlyVai= readline.question('Somente ida? Sim ou Nao ');
-    // const diaViagemIda = readline.question('Qual o dia da Sua viagem? DD/MM/AA ');
-    // const diaViagemVolta = readline.question('Qual o dia da Sua viagem? DD/MM/AA ');
     // const numeroDePassageiros = readline.question('Qual o numero de passageiros Adultos? ');
 
     // setando os inputs da pagina
@@ -34,16 +31,31 @@ const readline = require('readline-sync');
     await page.keyboard.press('Enter', {delay: 100});
     
     const somenteIda= readline.question('Somente ida? sim ou nao ');
-    const toInput = await page.$$('div[role="group"] button');
+    const idaInput = await page.$$('div[role="group"] button');
     if(somenteIda === 'sim') {
-      await toInput[1].click({delay: 200});
+      await idaInput[1].click({delay: 200});
     } else {
-      await toInput[0].click({delay: 200});
+      await idaInput[0].click({delay: 200});
+    }
+
+    if(somenteIda === 'sim') {
+      const diaViagemIda = readline.question('Qual o dia da Sua viagem? DD/MM/AA ');
+      const diaIdaInput = await page.$('[id="datepicker-ida"]');
+
+      await diaIdaInput.type(diaViagemIda);
+    } else {
+      const diaViagemIda = readline.question('Qual o dia da Sua viagem? DD/MM/AA ');
+      const diaViagemVolta = readline.question('Qual o dia da Sua viagem? DD/MM/AA ');
+      const diaIdaInput = await page.$('[id="datepicker-ida"]');
+      const diaVoltaInput = await page.$('[id="datepicker-volta"]');
+
+      await diaIdaInput.type(diaViagemIda);
+      await diaVoltaInput.type(diaViagemVolta);
     }
     
     // const toInput = await page.$$('input[placeholder="Busque por aeroporto"]')[1];
     // toInput.type(toCity);
-
+    // const toInput = await page.$$('div[role="group"] button');
 
     // document.querySelectorAll('button span.MuiButton-label');
     // await page.waitForSelector("span.MuiButton-label")[0];
