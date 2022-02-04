@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const readline = require('readline-sync');
 
 // Login Function Logic
 (async function main() {
@@ -18,7 +19,7 @@ const puppeteer = require('puppeteer');
     await page.waitForTimeout(5000);
 
     //Change to contact you want to send messages to
-    const contactName = "Davi 2. 0";
+    const contactName = readline.question('Qual o contanto? ');
     await page.click(`span[title='${contactName}']`);
     await page.waitForSelector(".y8WcF");
 
@@ -27,17 +28,17 @@ const puppeteer = require('puppeteer');
     await editor.focus();
 
     //Amount of messages you want to send
-    const amountOfMessages = 500;
+    const amountOfMessages = readline.question('Qual a quantidade de mensagens? 1 default ') || 1;
 
     //Loops through cycle of sending message
+    const message = readline.question('Qual a mensagem que deve ser enviada?: ');
     for (var i = 0; i < amountOfMessages; i++) {
-      await page.evaluate(() => {
-        const message = "Are you mad at me? :( ";
-        document.execCommand("insertText", false, message);
-      });
+      await page.type("div[title='Digite uma mensagem']", message, {delay: 30});
+      
       await page.click("span[data-testid='send']");
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(100);
     }
+    await browser.close();
   } catch (e) {
     console.error("error mine", e);
   }
