@@ -9,7 +9,7 @@ Projeto utilizado para aprender conteúdos sobre Web Scrapping com NodeJs, Pupet
 
 Abordando sobre conceitos de javaScript Runtime, web scrapping e mais infinitas possibilidades!
 
-Onde teve como desafio desenvolver um bot que pode me falar a temperatura de qualquer lugar do mundo
+Onde teve como primeiro desafio desenvolver um bot que pode me falar a temperatura de qualquer lugar do mundo
 
 
 </div>
@@ -36,7 +36,7 @@ Onde teve como desafio desenvolver um bot que pode me falar a temperatura de qua
 
 ## 🤔 Como contribuir <br/>
 
-- Faça um fork desse repositório; <br/>
+- Faça um clone desse repositório; <br/>
 - Cria uma branch com a sua feature: `git checkout -b minha-feature`;<br/>
 - Faça commit das suas alterações: `git commit -m 'feat: Minha nova feature'`; <br/>
 - Faça push para a sua branch: `git push origin minha-feature`.<br/>
