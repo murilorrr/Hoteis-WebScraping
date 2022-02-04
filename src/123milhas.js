@@ -1,33 +1,45 @@
 const puppeteer = require('puppeteer');
 const readline = require('readline-sync');
 
-// Login Function Logic
 (async function main() {
   try {
-    // Configures puppeteer
+    // Configurações puppeteer
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
     await page.setUserAgent(
       "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
     );
 
-    //Navigates to 123milhas
+    //Navega para 123milhas
     await page.goto("https://123milhas.com/");
 
     await page.waitForTimeout(1000);
 
-    // setando as Perguntas()
+    // Setando as Perguntas
 
-    const fromCity = readline.question('De onde você está saindo? ');
-    // const toCity= readline.question('Para onde você vai? ');
     // const onlyVai= readline.question('Somente ida? Sim ou Nao ');
     // const diaViagemIda = readline.question('Qual o dia da Sua viagem? DD/MM/AA ');
     // const diaViagemVolta = readline.question('Qual o dia da Sua viagem? DD/MM/AA ');
     // const numeroDePassageiros = readline.question('Qual o numero de passageiros Adultos? ');
 
     // setando os inputs da pagina
+    const fromCity = readline.question('De onde você está saindo? ');
     const fromInput = await page.$('input[placeholder="Busque por aeroporto"]');
-    fromInput.type(fromCity);
+    await fromInput.type(fromCity, {delay: 100});
+    await page.keyboard.press('Enter');
+
+    const toCity= readline.question('Para onde você vai? ');
+    const toInput = await page.$$('input[placeholder="Busque por aeroporto"]');
+    await toInput[1].type(toCity, {delay: 200});
+    await page.keyboard.press('Enter', {delay: 100});
+    
+    const somenteIda= readline.question('Somente ida? sim ou nao ');
+    const toInput = await page.$$('div[role="group"] button');
+    if(somenteIda === 'sim') {
+      await toInput[1].click({delay: 200});
+    } else {
+      await toInput[0].click({delay: 200});
+    }
     
     // const toInput = await page.$$('input[placeholder="Busque por aeroporto"]')[1];
     // toInput.type(toCity);
@@ -42,12 +54,7 @@ const readline = require('readline-sync');
 
     // const result = await page.evaluate(() => {
     //   const nodelist = document.querySelectorAll('button span.MuiButton-label');
-    //   const arrayNode = [...nodelist]
-    //   const botoes = arrayNode.map((node) => node.tagName);
-    //   return [botoes];
-    // });
-    // console.log(result);
-
+    //   const arrayNode = [...nodelist]fromCity
     // const botaoFromCity = document.getElementsByTagName('input')[1];
     // const botaoToCity = document.getElementsByTagName('input')[3];
 
