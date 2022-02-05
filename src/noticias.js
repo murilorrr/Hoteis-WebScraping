@@ -1,0 +1,1 @@
+// escrever um script para pegar as 10 primeiras noticias de um site qualquer
