@@ -3,7 +3,7 @@
 
 <div align=center>
 
-# 🟢 WebScrapping-weather 🟢
+# 🟢 WebScrapping 🟢
 
 Projeto utilizado para aprender conteúdos sobre Web Scrapping com NodeJs, Pupeteer e readline-sync
 
