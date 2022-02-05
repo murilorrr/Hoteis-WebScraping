@@ -11,6 +11,7 @@ const readline = require('readline-sync');
     );
 
     //Navega para 123milhas
+    // link = https://123milhas.com/v2/busca?de=CNF&para=MCZ&adultos=2&criancas=0&bebes=0&ida=10-10-2022&classe=3
     await page.goto("https://123milhas.com");
 
     await page.waitForTimeout(1000);
@@ -48,7 +49,6 @@ const readline = require('readline-sync');
       await diaIdaInput.type(diaViagemIda);
       await diaVoltaInput.type(diaViagemVolta);
     }
-
     const numeroDePassageiros = readline.question('Qual o numero de passageiros Adultos? ') || '2';
     const numeroDePassageirosInput = await page.$('[value="1 Passageiro"]');
     await numeroDePassageirosInput.click();
@@ -60,14 +60,88 @@ const readline = require('readline-sync');
 
     page.waitForTimeout(1000);
 
-    // ////////////////////////////////////////////////////////////////
-      const botaoSubmit = await page.$('button[type="submit"]');
-      await botaoSubmit.click()
-    // ////////////////////////////////////////////////////////////////
+    
+    const botaoSubmit = await page.$('button[type="submit"]');
+    await botaoSubmit.click()
+
+    // Redirecionamento
+    console.log('começa o timeout');
 
     await page.waitForSelector(".theme-text--value-1");
+    // await page.waitForSelector(".flight-time__arrow");
 
     await page.waitForTimeout(1000);
+
+    console.log('começa a buscar dados');
+
+    const data = [];
+
+    const elementoExemple = { 'viagem': {
+      'valor': '',
+      'numeroDePassageiros': '',
+      'empresa': '',
+      'duração': '',
+    }};
+
+    // const duraçãoDaViagem = elementoPai[0].querySelector('.flight-time__arrow ~ .theme-text--caption-1');
+    // const preco = elementoPai[0].querySelector('.theme-text--value-1').innerText;
+    
+
+    // const DadosDeViagens = await page.$$eval('flight-price-card', Cards => {
+    //   // inicializar os elementosBase de viagem para o nosso array
+    //   const cardData = {};
+
+    //   // Cards.map((card, i) => null);
+    //   // Cards.map((Card) => null);
+
+    //   const preco = Cards.map((Card) => Card.querySelector('.theme-text--value-1').innerText);
+    //   console.log(preco, 'preco');
+    //   const duraçãoDaViagem = Cards.map((Card) => {
+    //     console.log(Card.querySelector('.flight-time__arrow ~ .theme-text--caption-1').innerText);
+    //     return Card.querySelector('.flight-time__arrow ~ .theme-text--caption-1').innerText;
+    //   });
+    //   console.log(preco, 'duraçãoDaViagem');
+
+    //   cardData.preco = preco;
+    //   cardData.duraçãoDaViagem = duraçãoDaViagem;
+
+    //   return cardData;
+    // });
+
+    const DadosDeHoteis = await page.$$eval('.hotel-list-card__holder', Cards => {
+      // inicializar os elementosBase de hotel para o nosso array
+      const cardData = {};
+      console.log('criaCard');
+
+      // Cards.map((card, i) => null);
+      // Cards.map((Card) => null);
+
+      const precos = Cards.map((Card) => Card.querySelector('.theme-text--value-1').innerText);
+      const nomes = Cards.map((Card) => Card.querySelector('h4').innerText);
+      const avaliacoes = Cards.map((Card) => console.log(Card.querySelector('div .customer-grade__box-grade')).innerText || '0');
+      
+
+      cardData.precos = precos;
+      console.log('adiciona preços');
+
+      cardData.nomes = nomes;
+      console.log('adiciona nomes');
+
+      cardData.avaliacoes = avaliacoes;
+      console.log('adiciona avaliacões');
+
+      return cardData;
+    });
+
+    console.log(DadosDeHoteis);
+
+
+    // const result = await page.$$eval('.theme-text--value-1', Ul => {
+    //   // return anchors.map(anchor => anchor.textContent).slice(0, 10);
+    //   return Ul.map((node) => node.innerText);
+    // });
+
+    // console.log(result);
 
     // const result = await page.evaluate(() => {
     //   console.log('running');
