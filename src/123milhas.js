@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
 const readline = require('readline-sync');
+const fs = require('fs');
 
 (async function main() {
   try {
@@ -108,33 +109,46 @@ const readline = require('readline-sync');
     //   return cardData;
     // });
 
-    const DadosDeHoteis = await page.$$eval('.hotel-list-card__holder', Cards => {
+    const cardData = await page.$$eval('.hotel-list-card__holder', Cards => {
       // inicializar os elementosBase de hotel para o nosso array
+      const reference = 24;
       const cardData = {};
-      console.log('criaCard');
+      for (let index = 0; index < reference; index++) {
+        cardData[index] = {};
+      };
+      ////////////////////////////////////////////////////////////////
+      const precos = Cards.map((Card, i) => {
+        if (i<reference) cardData[i]['preço'] = Card.querySelector('.theme-text--value-1').innerText;
+      });
 
-      // Cards.map((card, i) => null);
-      // Cards.map((Card) => null);
+      const nomes = Cards.map((Card, i) => {
+        if (i<reference) cardData[i]['nome'] = Card.querySelector('h4').innerText;
+      });
 
-      const precos = Cards.map((Card) => Card.querySelector('.theme-text--value-1').innerText);
-      const nomes = Cards.map((Card) => Card.querySelector('h4').innerText);
-      const avaliacoes = Cards.map((Card) => console.log(Card.querySelector('div .customer-grade__box-grade')).innerText || '0');
+      const endereco = Cards.map((Card, i) => {
+        if (i<reference) cardData[i]['endereço'] = Card.querySelector('p.theme-text--body-3').innerText;
+      });
+
+      const commodits = Cards.map((Card, i) => {
+        const arrayCommodits = [];
+        const commoditsSpans = Card.querySelectorAll('li.hotel-commodities-list__named-list-item span');
+
+        const arrayMiddle = [...commoditsSpans];
+        arrayMiddle.map((commodit) => arrayCommodits.push(commodit.innerText));
+
+        if (i<reference) cardData[i]['commodits'] = arrayCommodits;
+      });
+
+      const avaliacoes = Cards.map((Card, i) => {
+        const avaliacaoNo = Card.querySelector('div.customer-grade__box-grade');
+        if (avaliacaoNo && i<reference) cardData[i]['avaliação'] = avaliacaoNo.innerText;
+      });
+      // quero pegar todos os  div.hotel-list-card__image-group > div.hotel-list-card__hotel-data-holder > customer-grade 
       
-
-      cardData.precos = precos;
-      console.log('adiciona preços');
-
-      cardData.nomes = nomes;
-      console.log('adiciona nomes');
-
-      cardData.avaliacoes = avaliacoes;
-      console.log('adiciona avaliacões');
-
       return cardData;
     });
 
-    console.log(DadosDeHoteis);
-
+    fs.writeFile('HoteisData.json', JSON.stringify(cardData, null, 2), ()=> {});
 
     // const result = await page.$$eval('.theme-text--value-1', Ul => {
     //   // return anchors.map(anchor => anchor.textContent).slice(0, 10);
@@ -167,65 +181,30 @@ const readline = require('readline-sync');
     // await page.type("div[title='Digite uma mensagem']", message, {delay: 30});
 
 
-      
-
     // esperar as respostas
 
     // await page.evaluate(() => {
     //   const botaoAdicionaAdulto = document.getElementsByClassName('jyrmBK')[1];
     //   const botaoConfirmaPassageiros = document.getElementsByClassName('iSAFWr')[0];
 
-      
 
     //   const dataIda = document.getElementsByClassName('DateInput_input_1')[0];
     //   const dataVolta = document.getElementsByClassName('DateInput_input_1')[1];
 
     //   console.log(botaoFromCity, botaoToCity);
 
-      
-
 
     //   // const viagens = document.querySelectorAll('article img');
     // })
 
-
-
-
     // guardar as respostas em uma tabela no servidor
-
-
-
 
     // servir as respostas no front ou em algum console.list
 
     // await page.waitForSelector("header._1G3Wr");
     // await page.waitForTimeout(5000);
 
-    //Change to contact you want to send messages to
-    //Algumas perguntas//
-    // const contactName = readline.question('Qual o contanto? ');
-    // const contactName = readline.question('Qual o contanto? ');
-    // await page.click(`button[text='${onlyVai !== null ? 'somente ida': 'Ida e Volta'}']`);
-    // await page.click(`input[placeholder=Busque por aeroporto'${fromCity}`);
-    // await page.click(`input[placeholder=Busque por aeroporto'${toCity}`);
-    // await page.waitForSelector(".y8WcF");
-
-    //Finds the message bar and focuses on it
-    // const editor = await page.$("div[tabindex='-1']");
-    // await editor.focus();
-
-    //Amount of messages you want to send
-    // const amountOfMessages = readline.question('Qual a quantidade de mensagens? 1 default ') || 1;
-
-    //Loops through cycle of sending message
-    // const message = readline.question('Qual a mensagem que deve ser enviada?: ');
-    // for (var i = 0; i < amountOfMessages; i++) {
-    //   await page.type("div[title='Digite uma mensagem']", message, {delay: 30});
-      
-    //   await page.click("span[data-testid='send']");
-    //   await page.waitForTimeout(100);
-    // }
-    // await browser.close();
+    await browser.close();
   } catch (e) {
     console.error("error mine", e);
   }
