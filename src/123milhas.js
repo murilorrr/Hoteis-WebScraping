@@ -111,7 +111,7 @@ const fs = require('fs');
 
     const cardData = await page.$$eval('.hotel-list-card__holder', Cards => {
       // inicializar os elementosBase de hotel para o nosso array
-      const reference = 24;
+      const reference = Cards.length;
       const cardData = {};
       for (let index = 0; index < reference; index++) {
         cardData[index] = {};
