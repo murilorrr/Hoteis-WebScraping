@@ -10,7 +10,7 @@ const readline = require('readline-sync');
   const temperatura = await page.evaluate(() =>{
     return document.getElementById('wob_tm').innerText;
   });
-  console.log(`A temperatura da ${cidade} é`,temperatura);
+  console.log(`A temperatura da ${cidade} é`,temperatura, 'graus');
 
   await browser.close();
 })();
