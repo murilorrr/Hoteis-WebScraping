@@ -8,7 +8,7 @@ const fs = require('fs');
 
   const DadosDeImgNoticia = await page.$$eval('li img.home__title__thumb', imgs => {
 
-    const result = {};
+    const result = [];
     // inicializar os elementosBase de img para o nosso array
     imgs.map((img,i) => {
       result[i] = {};
