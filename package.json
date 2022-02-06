@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/murilorsv14/WebScrapping-Wether#readme",
   "dependencies": {
+    "express": "^4.17.2",
     "puppeteer": "^13.0.1",
     "readline-sync": "^1.4.10"
   }
