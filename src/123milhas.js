@@ -93,7 +93,7 @@ const recuperaDadosDinamicosNa123Milhas = async() => {
     const jsonCardDatas = await page.$$eval('.hotel-list-card__holder', Cards => {
       // inicializar os elementosBase de hotel para o nosso array
       const reference = Cards.length;
-      const cardData = {};
+      const cardData = [];
       for (let index = 0; index < reference; index++) {
         cardData[index] = {};
       };
