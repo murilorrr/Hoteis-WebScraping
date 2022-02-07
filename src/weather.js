@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const readline = require('readline-sync');
 
 (async () => {
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   const cidade = readline.question('qual nome da cidade desejada: ');
   const url = `https://www.google.com/search?q=weather+${cidade}`;
