@@ -29,8 +29,10 @@ Onde teve como primeiro desafio desenvolver um bot que pode me falar a temperatu
 # Clonar o repositório com: #git clone https://github.com/murilorsv14/WebScrapping-Wether.git
 # Entrar numa IDE de sua preferência 
 # npm install para instalar dependencias
-# npm start para Executar o codigo
-
+# npm weather para saber a temperatura do local escolhido
+# npm 123milhas para Executar o codigo de bot da 123Milhas
+# npm zap para Executar bot de mensagens do whattszap
+# npm noticias para buscar as 10 noticias mais recentes
 ```
 
 
