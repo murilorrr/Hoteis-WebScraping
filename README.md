@@ -52,7 +52,7 @@ Depois que o merge da sua pull request for feito, você pode deletar a sua branc
     <tr>
         <td align="center">
             <a href="https://github.com/murilorsv14">
-                <img src="https://avatars2.githubusercontent.com/u/60048274?s=460&u=a7f56af7dbe7d6338401d5b256fba528d8f0400b&v=4" width="150px;" alt="Image do user" />
+                <img src="https://github.com/murilorsv14.png" width="150px;" alt="Image do user" />
                 <br />
                 <sub><b>Murilo Ribeiro</b></sub>
             </a>           
