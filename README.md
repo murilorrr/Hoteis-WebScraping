@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/murilorsv14/WebScrapping/blob/main/aviaoPixel.png?raw=true" width="auto" heigth="auto" title="Airplane">
+  <img src="https://github.com/murilorsv14/WebScrapping/blob/main/aviaoPixel.jpg?raw=true" heigth="200" width="200" title="Airplane">
 </p>
 <div align=center>
 
