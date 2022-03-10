@@ -1,6 +1,3 @@
-
-
-
 <div align=center>
 
 # 🟢 WebScrapping 🟢
@@ -9,7 +6,7 @@ Projeto utilizado para aprender conteúdos sobre Web Scrapping com NodeJs, Pupet
 
 Abordando sobre conceitos de javaScript Runtime, web scrapping e mais infinitas possibilidades!
 
-Onde teve como primeiro desafio desenvolver um bot que pode me falar a temperatura de qualquer lugar do mundo
+### ✈️ Onde teve como real desafio desenvolver uma aplicação que retornasse informações de hoteis de qualquer cidade do mundo
 
 
 </div>
