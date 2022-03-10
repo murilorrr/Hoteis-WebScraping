@@ -1,6 +1,3 @@
-
-
-
 <div align=center>
 
 # 🟢 WebScrapping 🟢
@@ -9,7 +6,7 @@ Projeto utilizado para aprender conteúdos sobre Web Scrapping com NodeJs, Pupet
 
 Abordando sobre conceitos de javaScript Runtime, web scrapping e mais infinitas possibilidades!
 
-Onde teve como primeiro desafio desenvolver um bot que pode me falar a temperatura de qualquer lugar do mundo
+### ✈️ Onde teve como real desafio desenvolver uma aplicação que retornasse informações de hoteis de qualquer cidade do mundo
 
 
 </div>
@@ -29,8 +26,10 @@ Onde teve como primeiro desafio desenvolver um bot que pode me falar a temperatu
 # Clonar o repositório com: #git clone https://github.com/murilorsv14/WebScrapping-Wether.git
 # Entrar numa IDE de sua preferência 
 # npm install para instalar dependencias
-# npm start para Executar o codigo
-
+# npm weather para saber a temperatura do local escolhido
+# npm 123milhas para Executar o codigo de bot da 123Milhas
+# npm zap para Executar bot de mensagens do whattszap
+# npm noticias para buscar as 10 noticias mais recentes
 ```
 
 
@@ -50,7 +49,7 @@ Depois que o merge da sua pull request for feito, você pode deletar a sua branc
     <tr>
         <td align="center">
             <a href="https://github.com/murilorsv14">
-                <img src="https://avatars2.githubusercontent.com/u/60048274?s=460&u=a7f56af7dbe7d6338401d5b256fba528d8f0400b&v=4" width="150px;" alt="Image do user" />
+                <img src="https://github.com/murilorsv14.png" width="150px;" alt="Image do user" />
                 <br />
                 <sub><b>Murilo Ribeiro</b></sub>
             </a>           
