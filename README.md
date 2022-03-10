@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="https://github.com/murilorsv14/WebScrapping/blob/main/aviaoPixel.png?raw=true" width="auto" heigth="auto" title="Airplane">
+</p>
 <div align=center>
 
 # 🟢 WebScrapping 🟢
