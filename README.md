@@ -26,17 +26,19 @@ Abordando sobre conceitos de javaScript Runtime, web scrapping e mais infinitas 
 
 ```bash
 #requisito NodeJs
-# Clonar o repositório com: #git clone https://github.com/murilorsv14/WebScrapping-Wether.git
+# Clonar o repositório com: #git clone https://github.com/murilorsv14/Hoteis-WebScraping.git
 # Entrar numa IDE de sua preferência 
 # npm install para instalar dependencias
 
-# npm 123milhas para Executar o a raspagem dinamica de hotéis
+# npm hoteis para Executar o a raspagem dinamica de hotéis
+# as informações serão persistidas em HoteisData.json e iniciará um servidor em
+# localhost:3000 para visualização dos dados pela web.
 
-# npm zap para Executar bot de mensagens do whattszap(teste)
+# npm zap para Executar bot de mensagens do whattszap(teste).
 
-# npm weather para saber a temperatura do local escolhido(side project)
+# npm weather para saber a temperatura do local escolhido(side project).
 
-# npm noticias para buscar as 10 noticias mais recentes(side project)
+# npm noticias para buscar as 10 noticias mais recentes(side project).
 ```
 
 

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "weather": "node src/weather.js",
-    "123milhas": "node src/123milhas.js",
+    "hoteis": "node src/123milhas.js",
     "zap": "node src/whattszap.js",
     "noticias": "node src/noticias.js"
   },
