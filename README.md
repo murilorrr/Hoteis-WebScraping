@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="https://github.com/murilorsv14/WebScrapping/blob/main/aviaoPixel.jpg?raw=true" heigth="200" width="200" title="Airplane">
+</p>
 <div align=center>
 
 # 🟢 WebScrapping 🟢
@@ -26,10 +29,14 @@ Abordando sobre conceitos de javaScript Runtime, web scrapping e mais infinitas 
 # Clonar o repositório com: #git clone https://github.com/murilorsv14/WebScrapping-Wether.git
 # Entrar numa IDE de sua preferência 
 # npm install para instalar dependencias
-# npm weather para saber a temperatura do local escolhido
-# npm 123milhas para Executar o codigo de bot da 123Milhas
-# npm zap para Executar bot de mensagens do whattszap
-# npm noticias para buscar as 10 noticias mais recentes
+
+# npm 123milhas para Executar o a raspagem dinamica de hotéis
+
+# npm zap para Executar bot de mensagens do whattszap(teste)
+
+# npm weather para saber a temperatura do local escolhido(side project)
+
+# npm noticias para buscar as 10 noticias mais recentes(side project)
 ```
 
 
